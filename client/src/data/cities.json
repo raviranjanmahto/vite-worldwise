@@ -1,6 +1,30 @@
 {
   "cities": [
     {
+      "cityName": "Silvassa",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2024-02-12T09:24:11.863Z",
+      "notes": "My second hometown 😃",
+      "position": {
+        "lat": 20.276266,
+        "lng": 73.008308
+      },
+      "id": 74443174
+    },
+    {
+      "cityName": "Sitamarhi",
+      "country": "India",
+      "emoji": "🇮🇳",
+      "date": "2024-02-12T09:24:11.863Z",
+      "notes": "My second hometown 😃",
+      "position": {
+        "lat": 26.6085,
+        "lng": 85.4908
+      },
+      "id": 76457895
+    },
+    {
       "cityName": "Lisbon",
       "country": "Portugal",
       "emoji": "🇵🇹",
