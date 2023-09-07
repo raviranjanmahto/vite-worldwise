@@ -1,18 +1,9 @@
 import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import { useEffect } from "react";
-import { useCitiesContext } from "../hooks/useCitiesContext";
+import { flagEmojiToPNG, useCitiesContext } from "../hooks/useCitiesContext";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
-
-const flagEmojiToPNG = (flag = "🇮🇳") => {
-  var countryCode = Array.from(flag, codeUnit => codeUnit.codePointAt())
-    .map(char => String.fromCharCode(char - 127397).toLowerCase())
-    .join("");
-  return (
-    <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt='flag' />
-  );
-};
 
 const formatDate = date =>
   new Intl.DateTimeFormat("en", {

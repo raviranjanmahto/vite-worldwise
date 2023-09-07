@@ -1,15 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./CityItem.module.css";
-import { useCitiesContext } from "../hooks/useCitiesContext";
-
-const flagEmojiToPNG = flag => {
-  var countryCode = Array.from(flag, codeUnit => codeUnit.codePointAt())
-    .map(char => String.fromCharCode(char - 127397).toLowerCase())
-    .join("");
-  return (
-    <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt='flag' />
-  );
-};
+import { flagEmojiToPNG, useCitiesContext } from "../hooks/useCitiesContext";
 
 const formatDate = date =>
   new Intl.DateTimeFormat("en", {
