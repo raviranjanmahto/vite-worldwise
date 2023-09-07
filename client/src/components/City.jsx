@@ -1,4 +1,18 @@
+import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
+import { useEffect } from "react";
+import { useCitiesContext } from "../hooks/useCitiesContext";
+import Spinner from "./Spinner";
+import BackButton from "./BackButton";
+
+const flagEmojiToPNG = (flag = "🇮🇳") => {
+  var countryCode = Array.from(flag, codeUnit => codeUnit.codePointAt())
+    .map(char => String.fromCharCode(char - 127397).toLowerCase())
+    .join("");
+  return (
+    <img src={`https://flagcdn.com/24x18/${countryCode}.png`} alt='flag' />
+  );
+};
 
 const formatDate = date =>
   new Intl.DateTimeFormat("en", {
@@ -9,22 +23,26 @@ const formatDate = date =>
   }).format(new Date(date));
 
 function City() {
-  // TEMP DATA
-  const currentCity = {
-    cityName: "Lisbon",
-    emoji: "🇵🇹",
-    date: "2027-10-31T15:59:59.138Z",
-    notes: "My favorite city so far!",
-  };
+  const { id } = useParams();
+  const { getCity, currentCity, isLoading } = useCitiesContext();
+
+  useEffect(
+    function () {
+      getCity(id);
+    },
+    [id]
+  );
 
   const { cityName, emoji, date, notes } = currentCity;
+
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.city}>
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>{emoji}</span> {cityName}
+          <span>{flagEmojiToPNG(emoji)}</span> {cityName}
         </h3>
       </div>
 
@@ -52,7 +70,7 @@ function City() {
       </div>
 
       <div>
-        <ButtonBack />
+        <BackButton />
       </div>
     </div>
   );
