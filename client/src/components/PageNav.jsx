@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import styles from "./PageNav.module.css";
 import Logo from "./Logo";
+import { useAuth } from "../contexts/AuthContext";
 
 const PageNav = () => {
+  const { user } = useAuth();
+
   return (
     <nav className={styles.nav}>
       <Logo />
@@ -16,7 +19,7 @@ const PageNav = () => {
         </li>
         <li>
           <NavLink to='/login' className={styles.ctaLink}>
-            Login
+            {user ? "Welcome " + user.name : "Login"}
           </NavLink>
         </li>
       </ul>
