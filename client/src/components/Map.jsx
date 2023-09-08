@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styles from "./Map.module.css";
 import {
   MapContainer,
@@ -13,16 +13,14 @@ import { useCitiesContext } from "../hooks/useCitiesContext";
 import { flagEmojiToPNG } from "../hooks/useFlagEmoji";
 import Button from "./Button";
 import { useGeolocation } from "../hooks/useGeoLocation";
+import { useUrlPosition } from "../hooks/useUrlPosition";
 
 const Map = () => {
   const { cities } = useCitiesContext();
   const { isLoading, position: geoPosition, getPosition } = useGeolocation();
 
   const [mapPosition, setMapPosition] = useState([20.276266, 73.008308]);
-
-  const [searchParams] = useSearchParams();
-  const lat = searchParams.get("lat");
-  const lng = searchParams.get("lng");
+  const [lat, lng] = useUrlPosition();
 
   useEffect(
     function () {
@@ -76,6 +74,7 @@ function ChangeCenter({ position }) {
   const map = useMap();
   map.closePopup();
   map.setView(position);
+  // map.setZoom(7);
   return null;
 }
 
