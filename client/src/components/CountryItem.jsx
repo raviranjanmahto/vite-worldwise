@@ -1,4 +1,4 @@
-import { flagEmojiToPNG } from "../hooks/useCitiesContext";
+import { flagEmojiToPNG } from "../hooks/useFlagEmoji";
 import styles from "./CountryItem.module.css";
 
 function CountryItem({ country }) {

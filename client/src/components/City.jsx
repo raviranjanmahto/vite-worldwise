@@ -1,9 +1,10 @@
 import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import { useEffect } from "react";
-import { flagEmojiToPNG, useCitiesContext } from "../hooks/useCitiesContext";
+import {  useCitiesContext } from "../hooks/useCitiesContext";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
+import { flagEmojiToPNG } from "../hooks/useFlagEmoji";
 
 const formatDate = date =>
   new Intl.DateTimeFormat("en", {
