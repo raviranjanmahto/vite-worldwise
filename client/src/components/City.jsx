@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import { useEffect } from "react";
-import {  useCitiesContext } from "../hooks/useCitiesContext";
+import { useCitiesContext } from "../hooks/useCitiesContext";
 import Spinner from "./Spinner";
 import BackButton from "./BackButton";
 import { flagEmojiToPNG } from "../hooks/useFlagEmoji";
@@ -22,7 +22,7 @@ function City() {
     function () {
       getCity(id);
     },
-    [id]
+    [id, getCity]
   );
 
   const { cityName, emoji, date, notes } = currentCity;
